@@ -5,7 +5,7 @@
         <PictureForm v-model="showForm" />
       </div>
       <RouterLink class="navbar__brand" to="/">
-        Vuesplash
+        CuteGreen
       </RouterLink>
       <div class="navbar__menu">
         <div class="navbar__item" v-if="isLogin">
