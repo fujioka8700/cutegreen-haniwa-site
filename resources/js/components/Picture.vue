@@ -55,3 +55,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+figure {
+  margin: 0;
+}
+.photo__username {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+</style>

@@ -1,9 +1,7 @@
 <template>
   <header>
-    <nav class="navbar">
-      <div v-if="isLogin">
-        <PictureForm v-model="showForm" />
-      </div>
+    <nav class="navbar fixed-top">
+      <PictureForm v-if="isLogin" v-model="showForm" />
       <RouterLink class="navbar__brand" to="/">
         CuteGreen
       </RouterLink>
@@ -19,7 +17,11 @@
         </span>
       </div>
       <div class="navbar__item">
-        <RouterLink class="button button--link" to="/login">
+        <RouterLink
+          class="button button--link"
+          :class="{ 'navbar__item--routerlink' : isLogin }"
+          to="/login"
+        >
           Login / Register
         </RouterLink>
       </div>
@@ -49,3 +51,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.navbar__brand {
+  text-decoration: none;
+}
+.navbar__item--routerlink {
+  text-decoration: none;
+  color: #8a8a8a;
+  pointer-events: none;
+}
+</style>
