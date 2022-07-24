@@ -1,7 +1,11 @@
 <template>
   <footer class="footer">
     <button class="button button--link" @click="logout" v-if="isLogin">Logout</button>
-    <RouterLink class="button button--link" to="/login">
+    <RouterLink
+      class="button button--link"
+      :class="{ 'footer__routerlink' : isLogin }"
+      to="/login"
+    >
       Login / Register
     </RouterLink>
   </footer>
@@ -30,3 +34,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.footer__routerlink {
+  text-decoration: none;
+  color: #8a8a8a;
+  pointer-events: none;
+}
+</style>
