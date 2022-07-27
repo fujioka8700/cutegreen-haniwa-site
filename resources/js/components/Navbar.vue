@@ -1,7 +1,7 @@
 <template>
   <header>
-    <nav class="navbar">
-      <div v-if="isLogin">
+    <nav class="navbar nav__inner--offset">
+      <div v-if="isLogin" class="nav__overray">
         <PictureForm v-model="showForm" />
       </div>
       <RouterLink class="navbar__brand" to="/">

@@ -1,0 +1,13 @@
+.nav {
+
+  &__inner {
+
+    &--offset {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__overray {
+    display: contents;
+  }
+}
