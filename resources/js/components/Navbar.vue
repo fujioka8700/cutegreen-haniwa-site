@@ -14,17 +14,19 @@
             Submit a photo
           </button>
         </div>
-        <span class="navbar__item" v-if="isLogin">
-          {{ username }}
-        </span>
       </div>
       <div class="navbar__item" v-if="!isLogin">
         <RouterLink class="button button--link" to="/login">
           Login / Register
         </RouterLink>
       </div>
-      <div v-if="isLogin">
-        <button class="button button--link" @click="logout">Logout</button>
+      <div class="d-flex align-items-center" v-if="isLogin">
+        <span class="navbar__item" v-if="isLogin">
+          <nobr>
+            {{ username }}
+          </nobr>
+        </span>
+        <button class="ml-1 button button--link" @click="logout">Logout</button>
       </div>
     </nav>
   </header>
