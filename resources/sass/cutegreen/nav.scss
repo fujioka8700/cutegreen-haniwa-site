@@ -1,0 +1,16 @@
+.nav {
+  &__brand:hover {
+    text-decoration: none;
+  }
+
+  &__inner {
+
+    &--offset {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__overray {
+    display: contents;
+  }
+}

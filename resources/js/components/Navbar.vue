@@ -1,8 +1,10 @@
 <template>
   <header>
-    <nav class="navbar fixed-top">
-      <PictureForm v-if="isLogin" v-model="showForm" />
-      <RouterLink class="navbar__brand" to="/">
+    <nav class="navbar nav__inner--offset">
+      <div v-if="isLogin" class="nav__overray">
+        <PictureForm v-model="showForm" />
+      </div>
+      <RouterLink class="navbar__brand nav__brand" to="/">
         CuteGreen
       </RouterLink>
       <div class="navbar__menu">
@@ -12,53 +14,56 @@
             Submit a photo
           </button>
         </div>
-        <span class="navbar__item" v-if="isLogin">
-          {{ username }}
-        </span>
       </div>
-      <div class="navbar__item">
-        <RouterLink
-          class="button button--link"
-          :class="{ 'navbar__item--routerlink' : isLogin }"
-          to="/login"
-        >
+      <div class="navbar__item" v-if="!isLogin">
+        <RouterLink class="button button--link" to="/login">
           Login / Register
         </RouterLink>
+      </div>
+      <div class="d-flex align-items-center" v-if="isLogin">
+        <span class="navbar__item" v-if="isLogin">
+          <nobr>
+            {{ username }}
+          </nobr>
+        </span>
+        <button class="ml-1 button button--link" @click="logout">Logout</button>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import PictureForm from './PictureForm';
+  import {
+    mapGetters
+  } from 'vuex';
+  import PictureForm from './PictureForm';
 
-export default {
-  components: {
-    PictureForm
-  },
-  data() {
-    return {
-      showForm: false
-    }
-  },
-  computed: {
-    isLogin() {
-      return this.$store.getters['auth/check'];
+  export default {
+    components: {
+      PictureForm
     },
-    username() {
-      return this.$store.getters['auth/username'];
+    data() {
+      return {
+        showForm: false
+      }
+    },
+    computed: {
+      ...mapGetters({
+        isLogin: 'auth/check'
+      }),
+      username() {
+        return this.$store.getters['auth/username'];
+      }
+    },
+    methods: {
+      async logout() {
+        await this.$store.dispatch('auth/logout');
+
+        if (this.apiStatus) {
+          this.$router.push('/login');
+        }
+      }
     }
   }
-}
-</script>
 
-<style scoped>
-.navbar__brand {
-  text-decoration: none;
-}
-.navbar__item--routerlink {
-  text-decoration: none;
-  color: #8a8a8a;
-  pointer-events: none;
-}
-</style>
+</script>
