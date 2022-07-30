@@ -18,34 +18,50 @@
           {{ username }}
         </span>
       </div>
-      <div class="navbar__item">
+      <div class="navbar__item" v-if="!isLogin">
         <RouterLink class="button button--link" to="/login">
           Login / Register
         </RouterLink>
+      </div>
+      <div v-if="isLogin">
+        <button class="button button--link" @click="logout">Logout</button>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import PictureForm from './PictureForm';
+  import {
+    mapGetters
+  } from 'vuex';
+  import PictureForm from './PictureForm';
 
-export default {
-  components: {
-    PictureForm
-  },
-  data() {
-    return {
-      showForm: false
-    }
-  },
-  computed: {
-    isLogin() {
-      return this.$store.getters['auth/check'];
+  export default {
+    components: {
+      PictureForm
     },
-    username() {
-      return this.$store.getters['auth/username'];
+    data() {
+      return {
+        showForm: false
+      }
+    },
+    computed: {
+      ...mapGetters({
+        isLogin: 'auth/check'
+      }),
+      username() {
+        return this.$store.getters['auth/username'];
+      }
+    },
+    methods: {
+      async logout() {
+        await this.$store.dispatch('auth/logout');
+
+        if (this.apiStatus) {
+          this.$router.push('/login');
+        }
+      }
     }
   }
-}
+
 </script>
