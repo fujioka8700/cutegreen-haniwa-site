@@ -4,7 +4,7 @@
       <div v-if="isLogin" class="nav__overray">
         <PictureForm v-model="showForm" />
       </div>
-      <RouterLink class="navbar__brand" to="/">
+      <RouterLink class="navbar__brand nav__brand" to="/">
         CuteGreen
       </RouterLink>
       <div class="navbar__menu">
