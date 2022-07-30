@@ -15,10 +15,10 @@
     <div class="panel" v-show="tab === 1">
       <form class="form" @submit.prevent="login">
         <div v-if="loginErrors" class="errors">
-          <ul v-if="loginErrors.email">
+          <ul v-if="loginErrors.email" class="login-errors--offset">
             <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
           </ul>
-          <ul v-if="loginErrors.password">
+          <ul v-if="loginErrors.password" class="login-errors--offset">
             <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
           </ul>
         </div>
@@ -34,13 +34,13 @@
     <div class="panel" v-show="tab === 2">
       <form class="form" @submit.prevent="register">
         <div v-if="registerErrors" class="errors">
-          <ul v-if="registerErrors.name">
+          <ul v-if="registerErrors.name" class="login-errors--offset">
             <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
           </ul>
-          <ul v-if="registerErrors.email">
+          <ul v-if="registerErrors.email" class="login-errors--offset">
             <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
           </ul>
-          <ul v-if="registerErrors.password">
+          <ul v-if="registerErrors.password" class="login-errors--offset">
             <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
           </ul>
         </div>
