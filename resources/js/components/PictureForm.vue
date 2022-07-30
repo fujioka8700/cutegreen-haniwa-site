@@ -133,3 +133,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.form__button {
+  margin-top: 1rem;
+}
+</style>
