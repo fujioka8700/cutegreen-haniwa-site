@@ -47,7 +47,7 @@
       <p v-else>No comments yet.</p>
       <form class="form" v-if="isLogin" @submit.prevent="addComment">
         <div v-if="commentErrors" class="errors">
-          <ul v-if="commentErrors.content" class="picturedetail-errors--offset">
+          <ul v-if="commentErrors.content" class="global-errors--offset">
             <li v-for="msg in commentErrors.content" :key="msg">{{ msg }}</li>
           </ul>
         </div>

@@ -6,7 +6,7 @@
     </div>
     <form v-show="!loading" class="form" @submit.prevent="submit">
       <div v-if="errors" class="errors">
-        <ul v-if="errors.picture">
+        <ul v-if="errors.picture" class="global-errors--offset">
           <li v-for="msg in errors.picture" :key="msg">{{ msg }}</li>
         </ul>
       </div>
