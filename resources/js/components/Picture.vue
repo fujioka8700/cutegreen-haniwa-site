@@ -1,39 +1,41 @@
 <template>
   <div class="photo">
-    <figure class="photo__wrapper">
-      <img
-        class="photo__image"
-        :src="item.url"
-        :alt="`Picture by ${item.owner.name}`"
+    <div class="photo__wrapper">
+      <figure>
+        <img
+          class="photo__image"
+          :src="item.url"
+          :alt="`Picture by ${item.owner.name}`"
+        >
+      </figure>
+      <RouterLink
+        class="photo__overlay"
+        :to="`/pictures/${item.id}`"
+        :title="`View the picture by ${item.owner.name}`"
       >
-    </figure>
-    <RouterLink
-      class="photo__overlay"
-      :to="`/pictures/${item.id}`"
-      :title="`View the picture by ${item.owner.name}`"
-    >
-      <div class="photo__controls">
-        <button
-          class="photo__action photo__action--like"
-          :class="{ 'photo__action--liked' : item.liked_by_user }"
-          title="Like Picture"
-          @click.prevent="like"
-        >
-          <i class="icon ion-md-heart"></i>{{ item.likes_count }}
-        </button>
-        <a
-          class="photo__action"
-          title="Download Picture"
-          :href="`/pictures/${item.id}/download`"
-          @click.stop
-        >
-          <i class="icon ion-md-arrow-round-down"></i>
-        </a>
-      </div>
-      <div class="photo__username">
-        {{ item.owner.name }}
-      </div>
-    </RouterLink>
+        <div class="photo__controls">
+          <button
+            class="photo__action photo__action--like"
+            :class="{ 'photo__action--liked' : item.liked_by_user }"
+            title="Like Picture"
+            @click.prevent="like"
+          >
+            <i class="icon ion-md-heart"></i>{{ item.likes_count }}
+          </button>
+          <a
+            class="photo__action"
+            title="Download Picture"
+            :href="`/pictures/${item.id}/download`"
+            @click.stop
+          >
+            <i class="icon ion-md-arrow-round-down"></i>
+          </a>
+        </div>
+        <div class="photo__username">
+          {{ item.owner.name }}
+        </div>
+      </RouterLink>
+    </div>
   </div>
 </template>
 
