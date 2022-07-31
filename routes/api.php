@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PictureController;
+use App\Http\Controllers\PlantController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -36,3 +37,5 @@ Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
   $request->session()->regenerateToken();
   return response()->json();
 })->name('reflesh-token');
+
+Route::post('/plants', [PlantController::class, 'create'])->name('plant.create');

@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Models\Picture');
     }
+
+    /**
+     * リレーションシップ - plantsテーブル
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function plants()
+    {
+      return $this->hasMany('App\Models\Plant');
+    }
 }

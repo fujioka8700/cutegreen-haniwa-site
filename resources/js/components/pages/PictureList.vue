@@ -1,8 +1,8 @@
 <template>
   <div class="photo-list">
-    <div class="grid">
+    <div class="row">
       <Picture
-        class="grid__item"
+        class="grid__item col-md-4 col-6"
         v-for="picture in pictures"
         :key="picture.id"
         :item='picture'
