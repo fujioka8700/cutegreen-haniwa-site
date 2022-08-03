@@ -7,6 +7,8 @@ import Login from './components/pages/Login';
 import SystemError from './components/pages/errors/System';
 import NotFound from './components/pages/errors/NotFound';
 import PlantForm from './components/PlantForm.vue';
+import PlantList from './components/pages/PlantList';
+
 
 import store from './store';
 
@@ -31,6 +33,16 @@ const router = new VueRouter({
     },
     {
       path: '/plants',
+      component: PlantList,
+      props: route => {
+        const page = route.query.page;
+        return {
+          page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+        }
+      }
+    },
+    {
+      path: '/plants/form',
       component: PlantForm
     },
     {
