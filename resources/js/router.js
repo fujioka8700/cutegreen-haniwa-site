@@ -6,6 +6,7 @@ import PictureDetail from './components/pages/PictureDetail';
 import Login from './components/pages/Login';
 import SystemError from './components/pages/errors/System';
 import NotFound from './components/pages/errors/NotFound';
+import PlantForm from './components/PlantForm.vue';
 
 import store from './store';
 
@@ -27,6 +28,10 @@ const router = new VueRouter({
           page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
         }
       }
+    },
+    {
+      path: '/plants',
+      component: PlantForm
     },
     {
       path: '/pictures/:id',
