@@ -16,7 +16,7 @@ class PlantController extends Controller
     /**
      * 認証が必要
      */
-    $this->middleware('auth')->except(['index']);
+    $this->middleware('auth')->except(['index', 'show']);
   }
 
   /**
@@ -56,5 +56,15 @@ class PlantController extends Controller
     $plants = Plant::with(['owner'])->orderby(Plant::CREATED_AT, 'desc')->paginate();
 
     return $plants;
+  }
+
+  /**
+   * 植物詳細
+   */
+  public function show(string $id)
+  {
+    $plant = Plant::where('id', $id)->with(['owner'])->first();
+
+    return $plant ?? abort(404);
   }
 }

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <figure>
-      <img :src="item.url" alt="">
-    </figure>
+    <RouterLink :to="`/plants/${item.id}`">
+      <figure>
+        <img :src="item.url" alt="">
+      </figure>
+    </RouterLink>
+    {{item.id}}
   </div>
 </template>
 

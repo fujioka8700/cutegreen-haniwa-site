@@ -8,7 +8,7 @@ import SystemError from './components/pages/errors/System';
 import NotFound from './components/pages/errors/NotFound';
 import PlantForm from './components/PlantForm.vue';
 import PlantList from './components/pages/PlantList';
-
+import PlantDetail from './components/pages/PlantDetail';
 
 import store from './store';
 
@@ -43,7 +43,19 @@ const router = new VueRouter({
     },
     {
       path: '/plants/form',
-      component: PlantForm
+      component: PlantForm,
+      beforeEnter(to, from, next) {
+        if (store.getters['auth/check']) {
+          next();
+        } else {
+          next('/plants');
+        }
+      }
+    },
+    {
+      path: '/plants/:id',
+      component: PlantDetail,
+      props: true
     },
     {
       path: '/pictures/:id',

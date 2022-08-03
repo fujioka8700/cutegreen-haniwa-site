@@ -40,3 +40,4 @@ Route::get('/reflesh-token', function (Illuminate\Http\Request $request) {
 
 Route::post('/plants', [PlantController::class, 'create'])->name('plant.create');
 Route::get('/plants', [PlantController::class, 'index'])->name('plant.index');
+Route::get('/plants/{id}', [PlantController::class, 'show'])->name('plant.show');
