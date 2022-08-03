@@ -16,7 +16,7 @@ class PlantController extends Controller
     /**
      * 認証が必要
      */
-    $this->middleware('auth');
+    $this->middleware('auth')->except(['index']);
   }
 
   /**
@@ -46,5 +46,15 @@ class PlantController extends Controller
     }
 
     return response($plant, 201);
+  }
+
+  /**
+   * 植物一覧
+   */
+  public function index()
+  {
+    $plants = Plant::with(['owner'])->orderby(Plant::CREATED_AT, 'desc')->paginate();
+
+    return $plants;
   }
 }
